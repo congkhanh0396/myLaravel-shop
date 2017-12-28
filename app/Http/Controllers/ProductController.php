@@ -11,6 +11,10 @@ class ProductController extends Controller
     	return view('admin.product.add');
     }
 
+    public function postAdd(){
+
+    }
+    
     //function danh sách sản phẩm
     public function getList(){
         $listItem = Products::select('*')->get();

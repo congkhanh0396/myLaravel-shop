@@ -25,6 +25,12 @@
 
     <!-- DataTables Responsive CSS -->
     <link href="admin/bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
+    <script src="{{url('templateEditor/ckeditor/ckeditor.js')}}"></script>
+
+      <script type="text/javascript">
+          var baseURL = "{!! url('/') !!}";
+
+      </script>
 </head>
 
 <body>
@@ -149,10 +155,12 @@
                                 <label>Intro</label>
                                 <textarea class="form-control" rows="3" name="txtIntro"></textarea>
                             </div>
+                            <script type="text/javascript">CKEDITOR.replace( 'txtIntro' );</script>
                             <div class="form-group">
                                 <label>Content</label>
                                 <textarea class="form-control" rows="3" name="txtContent"></textarea>
                             </div>
+                            <script type="text/javascript">CKEDITOR.replace( 'txtContent' );</script>
                             <div class="form-group">
                                 <label>Images</label>
                                 <input type="file" name="fImages">
