@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Products;
 class PageController extends Controller
 {
     //
     public function getIndex() {
-        // $a = Products::select('*')->get();
-        return view('pages.index');
+        $a = Products::select('*')->get();
+        return view('pages.index',compact('a'));
     }
 
     //

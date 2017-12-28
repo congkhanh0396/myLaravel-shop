@@ -86,16 +86,16 @@
 			<header>
 				<h3 class="head text-center">Latest Products</h3>
 			</header>
-			{{--  @foreach($a as $b)
+			@foreach($a as $b)
 				<div class="col-md-4 product simpleCart_shelfItem text-center">
-					<a href="single.html"><img src="../resources/images/{{$b->image}}" alt="" /></a>
+					{{--  <a href="single.html"><img src="../resources/images/{{$b->image}}" alt="" /></a>  --}}
 					<div class="mask">
 						<a href="single.html">Quick View</a>
 					</div>
 					<a class="product_name" href="single.html">{{$b->name}}</a>
 					<p><a class="item_add" href="#"><i></i> <span class="item_price">${{$b->price}}</span></a></p>
 				</div>
-			@endforeach  --}}
+			@endforeach
 			<div class="clearfix"></div>
 		</div>
 	</div>
