@@ -140,9 +140,9 @@
                             <tr align="center">
                                 <th>ID</th>
                                 <th>Name</th>
+                                <th>Category</th>
                                 <th>Price</th>
-                                <th>Date</th>
-                                <th>Status</th>
+                                <th>Date </th>
                                 <th>Delete</th>
                                 <th>Edit</th>
                             </tr>
@@ -152,9 +152,9 @@
                                 <tr class="odd gradeX" align="center">
                                     <td>1</td>
                                     <td>{{$item->name}}</td>
+                                    <td>Áo sơ mi</td>
                                     <td>{{$item->promotion}} vnd</td>
                                     <td>3 Minutes Age</td>
-                                    <td>Hiện</td>
                                     <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="#"> Delete</a></td>
                                     <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="#">Edit</a></td>
                                 </tr>
