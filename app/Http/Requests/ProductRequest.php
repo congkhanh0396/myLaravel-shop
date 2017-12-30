@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Requests;
-
 use Illuminate\Foundation\Http\FormRequest;
 
 class ProductRequest extends FormRequest
@@ -24,7 +23,14 @@ class ProductRequest extends FormRequest
     public function rules()
     {
         return [
-            
+            'txtName'=> 'required|unique:products,name'
+        ];
+    }
+
+    public function Message(){
+        return [
+           'txtName.required' => 'Không để trống dữ liệu',
+           'txtName.unique' => 'Tên sản phẩm không được trùng'
         ];
     }
 }

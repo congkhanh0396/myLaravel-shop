@@ -38,8 +38,9 @@ Route::group(['prefix'=>'admin'],function(){
         Route::get('list',['as'=>'admin.product.list','uses'=>'ProductController@getList']);	
         Route::get('add',['as'=>'admin.product.getAdd','uses'=>'ProductController@getAdd']);
         Route::post('add',['as'=>'admin.product.postAdd','uses'=>'ProductController@postAdd']);
-        Route::get('edit',['as'=>'admin.product.getEdit','uses'=>'ProductController@getEdit']);
-      
+        Route::get('delete/{id}',['as'=>'admin.product.getDelete','uses'=>'ProductController@getDelete']);
+        Route::get('edit/{id}',['as'=>'admin.product.getEdit','uses'=>'ProductController@getEdit']);
+        Route::post('edit/{id}',['as'=>'admin.product.postEdit','uses'=>'ProductController@postEdit']);
     });
 
     // phân chia nhóm loại sản phẩm

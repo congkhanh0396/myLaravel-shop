@@ -25,6 +25,10 @@
 
     <!-- DataTables Responsive CSS -->
     <link href="admin/bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
+    <script src="{{url('templateEditor/ckeditor/ckeditor.js')}}"></script>
+    <script type="text/javascript">
+        var baseURL = "{!! url('/') !!}";
+    </script>
 </head>
 
 <body>
@@ -130,47 +134,57 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Category
+                        <h1 class="page-header">Product
                             <small>Edit</small>
                         </h1>
                     </div>
                     <!-- /.col-lg-12 -->
                     <div class="col-lg-7" style="padding-bottom:120px">
-                        <form action="" method="POST">
+
+                        <form action="{{route('admin.product.getEdit', $item->id)}}" method="POST">
+                            <input type="hidden" name="_token" value="{{csrf_token()}}">
                             <div class="form-group">
-                                <label>Category Parent</label>
-                                <select class="form-control">
-                                    <option value="0">Please Choose Category</option>
-                                    <option value="">Tin Tức</option>
-                                </select>
+                                <label>Name</label>
+                                <input class="form-control" name="txtName" placeholder="Please Enter Username" value="{{$item->name}}" required/>
                             </div>
+
                             <div class="form-group">
-                                <label>Category Name</label>
-                                <input class="form-control" name="txtCateName" placeholder="Please Enter Category Name" />
+                                <label>Category</label>
+                                    <select class="form-control" name="txtCategory" placeholder="Please Enter Password" value="{{$item->id_type}}" required>
+                                        
+                                        @if($item->id_type == 1)
+                                            <option selected value="1">Áo thun</option>
+                                            <option value="2">Áo sơ mi</option>
+                                        @else
+                                            <option value="1">Áo thun</option>
+                                            <option selected value="2">Áo sơ mi</option>
+                                        @endif
+
+                                    </select>
                             </div>
+
                             <div class="form-group">
-                                <label>Category Order</label>
-                                <input class="form-control" name="txtOrder" placeholder="Please Enter Category Order" />
+                                <label>Description</label>
+                                <textarea class="form-control" rows="txtDescription" name="txtIntro" value="{{$item->description}}"></textarea>
                             </div>
+                            <script type="text/javascript">CKEDITOR.replace( 'txtIntro' );</script>
+
                             <div class="form-group">
-                                <label>Category Keywords</label>
-                                <input class="form-control" name="txtOrder" placeholder="Please Enter Category Keywords" />
+                                <label>Price</label>
+                                <input class="form-control" name="txtPrice" placeholder="Please Enter Username" value="{{$item->price}}"/>
                             </div>
+
                             <div class="form-group">
-                                <label>Category Description</label>
-                                <textarea class="form-control" rows="3"></textarea>
+                                <label>Promotion</label>
+                                <input class="form-control" name="txtPromotion" placeholder="Please Enter Username" value="{{$item->promotion}}"/>
                             </div>
+
                             <div class="form-group">
-                                <label>Category Status</label>
-                                <label class="radio-inline">
-                                    <input name="rdoStatus" value="1" checked="" type="radio">Visible
-                                </label>
-                                <label class="radio-inline">
-                                    <input name="rdoStatus" value="2" type="radio">Invisible
-                                </label>
+                                <label>Images</label>
+                                <input type="file" name="fImages" value="{{$item->image}}">
                             </div>
-                            <button type="submit" class="btn btn-default">Category Edit</button>
-                            <button type="reset" class="btn btn-default">Reset</button>
+                            <button type="submit" class="btn btn-default">Product Edit</button>
+                            <button type="reset" class="btn btn-default">Cancel</button>
                         <form>
                     </div>
                 </div>

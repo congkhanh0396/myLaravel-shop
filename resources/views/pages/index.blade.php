@@ -88,7 +88,7 @@
 			</header>
 			@foreach($a as $b)
 				<div class="col-md-4 product simpleCart_shelfItem text-center">
-					{{--  <a href="single.html"><img src="../resources/images/{{$b->image}}" alt="" /></a>  --}}
+					 <a href="single.html"><img src="{{$b->image}}" alt="" /></a>  
 					<div class="mask">
 						<a href="single.html">Quick View</a>
 					</div>

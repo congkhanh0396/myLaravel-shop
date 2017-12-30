@@ -8,7 +8,7 @@ class PageController extends Controller
 {
     //
     public function getIndex() {
-        $a = Products::select('*')->get();
+        $a = Products::select('*')->orderBy('id','desc')->take(3)->get();
         return view('pages.index',compact('a'));
     }
 

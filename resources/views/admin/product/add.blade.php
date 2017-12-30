@@ -142,16 +142,17 @@
                     </div>
                     <!-- /.col-lg-12 -->
                     <div class="col-lg-7" style="padding-bottom:120px">
-                        <form action="" method="POST">
 
+                        <form action="{{route('admin.product.getAdd')}}" method="POST">
+                            <input type="hidden" name="_token" value="{{csrf_token()}}">
                             <div class="form-group">
                                 <label>Name</label>
-                                <input class="form-control" name="txtName" placeholder="Please Enter Username" />
+                                <input class="form-control" name="txtName" placeholder="Please Enter Username" required/>
                             </div>
 
                             <div class="form-group">
                                 <label>Category</label>
-                                <input class="form-control" name="txtCategory" placeholder="Please Enter Password" />
+                                <input class="form-control" name="txtCategory" placeholder="Please Enter Password" required/>
                             </div>
 
                             <div class="form-group">

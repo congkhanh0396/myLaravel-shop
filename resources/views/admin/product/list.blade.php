@@ -150,14 +150,29 @@
                         <tbody>
                             @foreach($listItem as $item)
                                 <tr class="odd gradeX" align="center">
-                                    <td>1</td>
+                                
+                                    <td>{{$item->id}}</td>
                                     <td>{{$item->name}}</td>
-                                    <td>Áo sơ mi</td>
-                                    <td>{{$item->promotion}} vnd</td>
+                                    <td>
+                                        @if($item->id_type == 1)
+                                            Áo thun
+                                        @else
+                                            Áo sơ mi
+                                        
+                                        @endif
+                                    </td>
+                                    <td>
+                                    @if($item->promotion == 0) 
+                                        {{$item->price}} VND
+                                    @else
+                                        {{number_format($item->promotion, 3)}} VND
+                                    @endif
+                                    </td>
                                     <td>3 Minutes Age</td>
-                                    <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="#"> Delete</a></td>
-                                    <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="#">Edit</a></td>
+                                    <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a onclick="return xacNhanXoa('Bạn có xác nhận xóa?')" href="{{route('admin.product.getDelete', $item->id)}}">Delete</a></td>
+                                    <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.product.getEdit', $item->id)}}">Edit</a></td>
                                 </tr>
+                                
                             @endforeach
                         </tbody>
                     </table>
@@ -194,6 +209,14 @@
                 responsive: true
         });
     });
+
+    function xacNhanXoa(msg) {
+        if(window.confirm(msg)) {
+            return true;
+        }
+        else
+            return false;
+    };
     </script>
 </body>
 
