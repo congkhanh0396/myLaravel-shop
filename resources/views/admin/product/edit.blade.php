@@ -16,13 +16,12 @@
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="form-group">
                             <label>Name</label>
-                            <input class="form-control" name="txtName" placeholder="Please Enter Username" value="{{$item->name}}" required/>
+                            <input class="form-control" name="txtName" value="{{$item->name}}" required/>
                         </div>
 
                         <div class="form-group">
                             <label>Category</label>
-                                <select class="form-control" name="txtCategory" placeholder="Please Enter Password" value="{{$item->id_type}}" required>
-                                    
+                                <select class="form-control" name="txtCategory" value="{{$item->id_type}}" required>
                                     @if($item->id_type == 1)
                                         <option selected value="1">Áo thun</option>
                                         <option value="2">Áo sơ mi</option>
@@ -30,7 +29,6 @@
                                         <option value="1">Áo thun</option>
                                         <option selected value="2">Áo sơ mi</option>
                                     @endif
-
                                 </select>
                         </div>
 
@@ -42,19 +40,19 @@
 
                         <div class="form-group">
                             <label>Price</label>
-                            <input class="form-control" name="txtPrice" placeholder="Please Enter Username" value="{{$item->price}}"/>
+                            <input class="form-control" name="txtPrice" value="{{$item->price}}"/>
                         </div>
 
                         <div class="form-group">
                             <label>Promotion</label>
-                            <input class="form-control" name="txtPromotion" placeholder="Please Enter Username" value="{{$item->promotion}}"/>
+                            <input class="form-control" name="txtPromotion" value="{{$item->promotion}}"/>
                         </div>
 
                         <div class="form-group">
                             <label>Images</label>
                             <input type="file" name="fImages" value="{{$item->image}}">
                         </div>
-                        <button type="submit" class="btn btn-default">Product Edit</button>
+                        <button type="submit" class="btn btn-default">Edit</button>
                         <button type="reset" class="btn btn-default">Cancel</button>
                     <form>
                 </div>

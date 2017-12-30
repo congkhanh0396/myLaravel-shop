@@ -16,12 +16,15 @@
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="form-group">
                             <label>Name</label>
-                            <input class="form-control" name="txtName" placeholder="Please Enter Username" required/>
+                            <input class="form-control" name="txtName" placeholder="Nhập tên sản phẩm" required/>
                         </div>
 
                         <div class="form-group">
                             <label>Category</label>
-                            <input class="form-control" name="txtCategory" placeholder="Please Enter Password" required/>
+                                <select class="form-control" name="txtCategory">
+                                    <option selected value="1">Áo thun</option>
+                                    <option value="2">Áo sơ mi</option>
+                                </select>
                         </div>
 
                         <div class="form-group">
@@ -32,19 +35,19 @@
 
                         <div class="form-group">
                             <label>Price</label>
-                            <input class="form-control" name="txtPrice" placeholder="Please Enter Username" />
+                            <input class="form-control" name="txtPrice" placeholder="Nhập giá sản phẩm" />
                         </div>
 
                         <div class="form-group">
                             <label>Promotion</label>
-                            <input class="form-control" name="txtPromotion" placeholder="Please Enter Username" />
+                            <input class="form-control" name="txtPromotion" placeholder="Nhập giá khuyến mãi" />
                         </div>
 
                         <div class="form-group">
                             <label>Images</label>
                             <input type="file" name="fImages">
                         </div>
-                        <button type="submit" class="btn btn-default">Product Add</button>
+                        <button type="submit" class="btn btn-default">Add</button>
                         <button type="reset" class="btn btn-default">Cancel</button>
                     <form>
                 </div>
