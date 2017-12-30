@@ -25,7 +25,6 @@
                     <tbody>
                         @foreach($listItem as $item)
                             <tr class="odd gradeX" align="center">
-                            
                                 <td>{{$item->id}}</td>
                                 <td>{{$item->name}}</td>
                                 <td>

@@ -22,8 +22,8 @@
                         <div class="form-group">
                             <label>Category</label>
                                 <select class="form-control" name="txtCategory">
-                                    <option selected value="1">Áo thun</option>
-                                    <option value="2">Áo sơ mi</option>
+                                    <option selected value="1">Áo Thun</option>
+                                    <option value="2">Áo Sơ Mi</option>
                                 </select>
                         </div>
 

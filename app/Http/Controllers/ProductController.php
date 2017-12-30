@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Products; // sử dụng table product
+use App\Products; // sử dụng table products
 use App\Http\Requests\ProductRequest;
 use Illuminate\Http\Request;
 
@@ -12,6 +12,7 @@ class ProductController extends Controller
     	return view('admin.product.add');
     }
 
+    //function thêm sản phẩm
     public function postAdd(ProductRequest $req){
         $item = new Products;
         $item->name = $req->txtName;
@@ -29,7 +30,7 @@ class ProductController extends Controller
         return view('admin.product.list',compact('listItem'));
     }
 
-    //
+    //function xóa sản phẩm
     public function getDelete($id){
         $item = Products::find($id);
         $item->delete($id);
