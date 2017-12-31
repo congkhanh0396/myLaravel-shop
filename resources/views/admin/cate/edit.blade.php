@@ -14,8 +14,10 @@
                     <form action="{{route('admin.cate.getEdit', $item->id)}}" method="POST">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="form-group">
+                            <label>Id</label>
+                            <input class="form-control" name="txtCateName" value="{{$item->id}}" readonly/>
                             <label>Category Name</label>
-                            <input class="form-control" name="txtCateName" />
+                            <input class="form-control" name="txtCateName" value="{{$item->name }}" />
                         </div>
                         <button type="submit" class="btn btn-default">Category Edit</button>
                         <button type="reset" class="btn btn-default">Reset</button>
