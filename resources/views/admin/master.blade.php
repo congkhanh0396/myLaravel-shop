@@ -126,6 +126,7 @@
             </div>
             <!-- /.navbar-static-side -->
         </nav>
+        
         @yield('content')
     </div>
     <!-- /#wrapper -->
@@ -161,6 +162,8 @@
         else
             return false;
     };
+
+    $("div.alert").delay(3000).slideUp();
     </script>
 </body>
 </html>

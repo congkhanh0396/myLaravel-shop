@@ -11,7 +11,7 @@
                 </div>
                 <!-- /.col-lg-12 -->
                 <div class="col-lg-7" style="padding-bottom:120px">
-
+                    @include('admin.blocks.error')
                     <form action="{{route('admin.product.getEdit', $item->id)}}" method="POST">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="form-group">
@@ -34,9 +34,9 @@
 
                         <div class="form-group">
                             <label>Description</label>
-                            <textarea class="form-control" rows="txtDescription" name="txtIntro" value="{{$item->description}}"></textarea>
+                            <textarea class="form-control" name="txtDescription">{{$item->description}}</textarea>
                         </div>
-                        <script type="text/javascript">CKEDITOR.replace( 'txtIntro' );</script>
+                        <script type="text/javascript">CKEDITOR.replace('txtDescription');</script>
 
                         <div class="form-group">
                             <label>Price</label>

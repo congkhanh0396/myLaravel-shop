@@ -4,10 +4,19 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\UserRequest;
 class UserController extends Controller
 {
     //
-    public function getAdd(){
+    public function getAdd(Request $req){
+        $newUser = new User;
+        $newUser->email = $req->txtEmail;
+        $newUser->password = $req->txtPass;
+        $newUser->name = $req->txtName;
+        $newUser->gender = $req->txtGender;
+        $newUser->address = $req->txtAddress;
+        $newUser->phone = $req->txtPhoneNumber;
+        $newUser->save();
     	return view('admin.user.add');
     }
 

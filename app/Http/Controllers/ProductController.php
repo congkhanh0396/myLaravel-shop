@@ -21,7 +21,7 @@ class ProductController extends Controller
         $item->price = $req->txtPrice;
         $item->promotion = $req->txtPromotion;
         $item->save();
-        return redirect()->route('admin.product.list');
+        return redirect()->route('admin.product.list')->with(['flash_level'=>'success','flash_message'=>'Thêm sản phẩm thành công']);
     }
     
     //function danh sách sản phẩm

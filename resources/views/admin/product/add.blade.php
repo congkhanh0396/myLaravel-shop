@@ -11,12 +11,13 @@
                 </div>
                 <!-- /.col-lg-12 -->
                 <div class="col-lg-7" style="padding-bottom:120px">
-
+                    @include('admin.blocks.error')
                     <form action="{{route('admin.product.getAdd')}}" method="POST">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
+                        
                         <div class="form-group">
                             <label>Name</label>
-                            <input class="form-control" name="txtName" placeholder="Nhập tên sản phẩm" required/>
+                            <input class="form-control" name="txtName" placeholder="Nhập tên sản phẩm" value="{!! old('txtName') !!}" />
                         </div>
 
                         <div class="form-group">
@@ -29,18 +30,18 @@
 
                         <div class="form-group">
                             <label>Description</label>
-                            <textarea class="form-control" rows="txtDescription" name="txtIntro"></textarea>
+                            <textarea class="form-control" name="txtDescription">{{old('txtDescription')}}</textarea>
                         </div>
-                        <script type="text/javascript">CKEDITOR.replace( 'txtIntro' );</script>
+                        <script type="text/javascript">CKEDITOR.replace('txtDescription');</script>
 
                         <div class="form-group">
                             <label>Price</label>
-                            <input class="form-control" name="txtPrice" placeholder="Nhập giá sản phẩm" />
+                            <input class="form-control" name="txtPrice" placeholder="Nhập giá sản phẩm" value="{!! old('txtPrice') !!}" />
                         </div>
 
                         <div class="form-group">
                             <label>Promotion</label>
-                            <input class="form-control" name="txtPromotion" placeholder="Nhập giá khuyến mãi" />
+                            <input class="form-control" name="txtPromotion" placeholder="Nhập giá khuyến mãi" value="{!! old('txtPromotion') !!}"/>
                         </div>
 
                         <div class="form-group">
