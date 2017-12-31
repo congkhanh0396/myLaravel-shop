@@ -14,8 +14,8 @@
                         <thead>
                             <tr align="center">
                                 <th>ID</th>
+                                <th>Email Address</th>
                                 <th>Name</th>
-                                <th>Category Parent</th>
                                 <th>Status</th>
                                 <th>Delete</th>
                                 <th>Edit</th>
@@ -23,20 +23,14 @@
                         </thead>
                         <tbody>
                             <tr class="odd gradeX" align="center">
-                                <td>1</td>
-                                <td>Tin Tức</td>
-                                <td>None</td>
-                                <td>Hiện</td>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="#"> Delete</a></td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="#">Edit</a></td>
-                            </tr>
-                            <tr class="even gradeC" align="center">
-                                <td>2</td>
-                                <td>Bóng Đá</td>
-                                <td>Thể Thao</td>
-                                <td>Ẩn</td>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="#"> Delete</a></td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="#">Edit</a></td>
+                                @foreach($listUser as $item)
+                                    <td>1</td>
+                                    <td>{{$item->email}}</td>
+                                    <td>{{$item->name}}</td>
+                                    <td>Hiện</td>
+                                    <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="#"> Delete</a></td>
+                                    <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="#">Edit</a></td>
+                                @endforeach
                             </tr>
                         </tbody>
                     </table>

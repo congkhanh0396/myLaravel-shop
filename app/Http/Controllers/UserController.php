@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\User;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class UserController extends Controller
 {
     //
@@ -13,7 +13,8 @@ class UserController extends Controller
 
     //function danh sách sản phẩm
     public function getList(){
-        return view('admin.user.list');
+        $listUser = DB::table('user')->get();
+        return view('admin.user.list',compact('listUser'));
     }
 
     //function sửa sản phẩm
