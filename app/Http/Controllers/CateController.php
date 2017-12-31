@@ -13,8 +13,8 @@ class CateController extends Controller
     }
 
     //function thêm sản phẩm
-    public function postAdd(CateRequest $req){
-        $item = new Type_products;
+    public function postAdd(Request $req){
+        $item = new Type_products();
         $item->name = $req->txtCateName;
         $item->save();
         return redirect()->route('admin.cate.list');
