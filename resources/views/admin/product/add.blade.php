@@ -12,7 +12,8 @@
                 <!-- /.col-lg-12 -->
                 <div class="col-lg-7" style="padding-bottom:120px">
                     @include('admin.blocks.error')
-                    <form action="{{route('admin.product.getAdd')}}" method="POST">
+                     {{--  Them hình thì cần enctype  --}}
+                    <form action="{{route('admin.product.getAdd')}}" method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                         
                         <div class="form-group">
@@ -48,6 +49,7 @@
                             <label>Images</label>
                             <input type="file" name="fImages">
                         </div>
+                        
                         <button type="submit" class="btn btn-default">Add</button>
                         <button type="reset" class="btn btn-default">Cancel</button>
                     <form>

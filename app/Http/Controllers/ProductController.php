@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Products; // sử dụng table products
 use App\Http\Requests\ProductRequest;
 use Illuminate\Http\Request;
+use File;
 
 class ProductController extends Controller
 {
@@ -14,14 +15,17 @@ class ProductController extends Controller
 
     //function thêm sản phẩm
     public function postAdd(ProductRequest $req){
+        $file_name = $req->file('fImages')->getClientOriginalName();
         $item = new Products;
         $item->name = $req->txtName;
         $item->id_type = $req->txtCategory;
         $item->description = $req->txtDescription;
         $item->price = $req->txtPrice;
         $item->promotion = $req->txtPromotion;
+        $item->image = $file_name;
+    	$req->file('fImages')->move('../resources/images',$file_name);
         $item->save();
-        return redirect()->route('admin.product.list')->with(['flash_level'=>'success','flash_message'=>'Thêm sản phẩm thành công']);
+        return redirect()->route('admin.product.list')->with(['flash_level'=>'success','flash_message'=>'Successfully added product']);
     }
     
     //function danh sách sản phẩm

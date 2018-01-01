@@ -26,7 +26,8 @@ class ProductRequest extends FormRequest
             'txtName'=> 'required|unique:products,name',
             'txtDescription'=> 'required',
             'txtPrice' => 'required|numeric',
-            'txtPromotion' => 'required|numeric'
+            'txtPromotion' => 'required|numeric',
+            'fImages' => 'required|image'
         ];
     }
 
