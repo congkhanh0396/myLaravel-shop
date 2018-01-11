@@ -11,6 +11,13 @@
                 </div>
                 <!-- /.col-lg-12 -->
                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                        <div class="col-lg-12">
+                                @if(Session::has('flash_message'))
+                                     <div class="alert alert-{{Session::get('flash_level')}}">
+                                         {{ Session::get('flash_message')}}
+                                    </div>
+                                 @endif
+                        </div>
                     <thead>
                         <tr align="center">
                             <th>ID</th>

@@ -53,11 +53,17 @@ Route::group(['prefix'=>'admin'],function(){
         Route::post('edit/{id}',['as'=>'admin.cate.postEdit','uses'=>'CateController@postEdit']);
       
     });
-    // phân chia nhóm user
+    // phân chia nhóm user khách hàng
     Route::group(['prefix'=>'user'],function(){
         Route::get('list',['as'=>'admin.user.list','uses'=>'UserController@getList']);	
         Route::get('add',['as'=>'admin.user.getAdd','uses'=>'UserController@getAdd']);
-        Route::get('edit',['as'=>'admin.user.getEdit','uses'=>'UserController@getEdit']);
-      
+        Route::post('add',['as'=>'admin.user.postAdd','uses'=>'UserController@postAdd']);     
+    });
+
+    // phân chia nhóm tài khoản Admin
+    Route::group(['prefix'=>'userAdmin'],function(){
+        Route::get('list',['as'=>'admin.userAdmin.list','uses'=>'AdminController@getList']);
+        Route::get('add',['as'=>'admin.userAdmin.getAdd','uses'=>'AdminController@getAdd']);
+        Route::post('add',['as'=>'admin.userAdmin.postAdd','uses'=>'AdminController@postAdd']);  	  
     });
 });

@@ -1,32 +1,41 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\User;
+
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\User;
 use App\Http\Requests\UserRequest;
+use Hash;
 class UserController extends Controller
 {
-    //
-    public function getAdd(Request $req){
-        $newUser = new User;
-        $newUser->email = $req->txtEmail;
-        $newUser->password = $req->txtPass;
-        $newUser->name = $req->txtName;
-        $newUser->gender = $req->txtGender;
-        $newUser->address = $req->txtAddress;
-        $newUser->phone = $req->txtPhoneNumber;
-        $newUser->save();
-    	return view('admin.user.add');
-    }
-
-    //function danh sách sản phẩm
     public function getList(){
-        $listUser = DB::table('user')->get();
-        return view('admin.user.list',compact('listUser'));
+        $User = User::select('*')->get();
+        return view('admin.user.list',compact('User'));
     }
 
-    //function sửa sản phẩm
+    public function getAdd(){
+        return view('admin.user.add');
+    }
+
+    public function postAdd(UserRequest $req){
+        $user = new User();
+        $user->email = $req->txtEmail;
+        $user->password = Hash::make($req->txtPass);
+        $user->name = $req->txtName;
+        $user->gender = $req->txtGender;
+        $user->address = $req->txtAddress;
+        $user->phone = $req->txtPhoneNumber;
+        $user->save();
+        return redirect()->route('admin.user.list')->with(['flash_level'=>'success','flash_message'=>'Successfully added user']);
+    }
+
+    public function getDelete($id){
+        $user = User::find($id);
+        $user->delete($id);
+        return redirect()->route('admin.user.list')->with(['flash_level'=>'success','flash_message'=>'Successfully deleted user']);
+
+    }
+
     public function getEdit(){
         return view('admin.user.edit');
     }

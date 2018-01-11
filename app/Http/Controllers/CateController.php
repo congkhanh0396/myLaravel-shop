@@ -17,7 +17,7 @@ class CateController extends Controller
         $item = new Type_products();
         $item->name = $req->txtCateName;
         $item->save();
-        return redirect()->route('admin.cate.list');
+        return redirect()->route('admin.cate.list')->with(['flash_level'=>'success','flash_message'=>'Successfully added cate product']);
     }
 
     //function danh sách sản phẩm
@@ -30,7 +30,7 @@ class CateController extends Controller
     public function getDelete($id){
         $item = Type_products::find($id);
         $item->delete($id);
-        return redirect()->route('admin.cate.list');
+        return redirect()->route('admin.cate.list')->with(['flash_level'=>'success','flash_message'=>'Successfully deleted cate product']);
     }
 
     //function sửa sản phẩm
@@ -44,7 +44,7 @@ class CateController extends Controller
         $item = Type_products::find($id);
         $item->name = $req->txtCateName;
         $item->save();
-        return redirect()->route('admin.cate.list');
+        return redirect()->route('admin.cate.list')->with(['flash_level'=>'success','flash_message'=>'Successfully updated cate product']);
     }
 
 }

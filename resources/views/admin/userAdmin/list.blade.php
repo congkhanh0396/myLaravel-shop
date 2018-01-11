@@ -29,16 +29,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($User as $item)
                                     <tr class="odd gradeX" align="center">
-                                            <td>{{$item->id}}</td>
-                                            <td>{{$item->email}}</td>
-                                            <td>{{$item->name}}</td>
-                                            <td>{{$item->gender}}</td>
-                                            <td>{{$item->address}}</td>
-                                            <td>{{$item->phone}}</td>
+                                            <td>1</td>
+                                            <td>1</td>
+                                            <td>1</td>
+                                            <td>1</td>
+                                            <td>1}</td>
+                                            <td>1</td>
                                     </tr>
-                            @endforeach
                         </tbody>
                     </table>
                 </div>

@@ -49,7 +49,7 @@
                             <label>Images</label>
                             <input type="file" name="fImages">
                         </div>
-                        
+
                         <button type="submit" class="btn btn-default">Add</button>
                         <button type="reset" class="btn btn-default">Cancel</button>
                     <form>
