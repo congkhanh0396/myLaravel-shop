@@ -11,7 +11,7 @@
                     </div>
                     <!-- /.col-lg-12 -->
                     <div class="col-lg-7" style="padding-bottom:120px">
-                        <form action="{{route('admin.user.getAdd')}}" method="POST"> 
+                        <form action="{{route('admin.userAdmin.getAdd')}}" method="POST"> 
                             @include('admin.blocks.error')
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
                             {{--  Tài khoản user  --}}

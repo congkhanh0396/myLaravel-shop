@@ -29,9 +29,17 @@ Route::get('account', ['as'=>'account', 'uses'=>'PageController@getAccount']);
 
 Route::get('register', ['as'=>'register', 'uses'=>'PageController@getRegister']);
 
-Route::group(['prefix'=>'admin'],function(){
-    //route dẫn tới login trang admin
-    Route::get('login',['as'=>'admin.login','uses'=>'AdminController@getLogin']);
+ //route dẫn tới login trang admin
+Route::get('auth/login',['as'=>'admin.login','uses'=>'loginAdminController@getLogin']);
+Route::post('auth/login',['as'=>'admin.login','uses'=>'loginAdminController@postLogin']);
+Route::get('auth/logout',['as'=>'admin.logout','uses'=>'loginAdminController@getLogout']);
+
+Route::group(['prefix'=>'admin','middleware'=>'CheckloginAdmin'],function(){
+
+    // //route dẫn tới login trang admin
+    // Route::get('login',['as'=>'admin.login','uses'=>'loginAdminController@getLogin']);
+    // Route::post('login',['as'=>'admin.login','uses'=>'loginAdminController@postLogin']);
+    // Route::get('logout',['as'=>'admin.logout','uses'=>'loginAdminController@getLogout']);
 
     // phân chia nhóm sản phẩm
     Route::group(['prefix'=>'product'],function(){
@@ -65,5 +73,8 @@ Route::group(['prefix'=>'admin'],function(){
         Route::get('list',['as'=>'admin.userAdmin.list','uses'=>'AdminController@getList']);
         Route::get('add',['as'=>'admin.userAdmin.getAdd','uses'=>'AdminController@getAdd']);
         Route::post('add',['as'=>'admin.userAdmin.postAdd','uses'=>'AdminController@postAdd']);  	  
+        Route::get('delete/{id}',['as'=>'admin.userAdmin.getDelete','uses'=>'AdminController@getDelete']);
+        Route::get('edit/{id}',['as'=>'admin.userAdmin.getEdit','uses'=>'AdminController@getEdit']);
+        Route::post('edit/{id}',['as'=>'admin.userAdmin.postEdit','uses'=>'AdminController@postEdit']); 
     });
 });

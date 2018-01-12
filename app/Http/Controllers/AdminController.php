@@ -5,21 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Admin;
 use Hash;
+use Auth;
 use App\Http\Requests\AdminRequest;
 class AdminController extends Controller
 {
 
-    // đăng nhập admin
-    public function getLogin(){
-        return view('admin.login');
-    }
 
-    public function postLogin(){
-
-    }
 
     public function getList(){
-        return view('admin.userAdmin.list');
+        $list = Admin::select('*')->get();
+        return view('admin.userAdmin.list',compact('list'));
     }
 
     public function getAdd(){
@@ -31,8 +26,53 @@ class AdminController extends Controller
         $username->username = $req->txtUsername;
         $username->password = Hash::make($req->txtPass);
         $username->level = $req->rdoLevel;
-        $user->save();
-        return view('admin.userAdmin.list');
+        $username->save();
+        return redirect()->route('admin.userAdmin.list')->with(['flash_level'=>'success','flash_message'=>'Successfully added userAdmin']);
+    }
+
+    public function getDelete($id){
+        $user_current_login = Auth::user()->id;
+        $username = Admin::find($id);
+        if(($id == 1)|| ($user_current_login == $id) || ($user_current_login !=1 && $username->level == 0)){
+            return redirect()->route('admin.userAdmin.list')->with(['flash_level'=>'danger','flash_message'=>'You cant delete this Username']);
+        }
+        else{
+    		$username->delete($id);
+    		return redirect()->route('admin.userAdmin.list')->with(['flash_level'=>'success','flash_message'=>'Successfully deleted userAdmin']);
+    	}
+    }
+
+    // public function getEdit($id){
+    //     $username = Admin::find($id);
+    //     return view('admin.userAdmin.edit',compact('username'));
+        
+    // }
+
+    public function getEdit($id){
+        $username = Admin::find($id);
+        if (Auth::user()->id != 1 && ($id == 1 || ($username["level"] == 0 || Auth::user()->id != $id ))){
+            return redirect()->route('admin.userAdmin.list')->with(['flash_level'=>'danger','flash_message'=>'You cant updated this Username']);
+        }
+    	return view('admin.userAdmin.edit',compact('username'));
+    }
+
+    public function postEdit($id,Request $req){
+        $username = Admin::find($id);
+    	if($req->input('txtPass')) {
+            $this->validate($req,
+            [
+                'txtRePass' => 'same:txtRePass'
+            ],
+            [
+                'txtRePass.same' => 'Mật khẩu không trùng khớp'
+            ]);
+            $pass = $req->input('txtPass');
+            $username->password = Hash::make($pass);
+        }
+        $username->level = $req->rdoLevel;
+        // $username->remember_token = $req->input('_token');
+        $username->save();
+        return redirect()->route('admin.userAdmin.list')->with(['flash_level'=>'success','flash_message'=>'Successfully updated this Username']);
     }
 
 }

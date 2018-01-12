@@ -36,11 +36,9 @@
                                 <td>{{$item->id}}</td>
                                 <td>{{$item->name}}</td>
                                 <td>
-                                    @if($item->id_type == 1)
-                                        Áo thun
-                                    @else
-                                        Áo sơ mi
-                                    
+                     <?php $cate = DB::table('type_products')->where('id',$item->id_type)->first(); ?>
+                                    @if(!empty($cate->name))
+                                        {!! $cate->name !!}
                                     @endif
                                 </td>
                                 <td>
@@ -50,7 +48,11 @@
                                     {{number_format($item->promotion, 3)}} VND
                                 @endif
                                 </td>
-                                <td>3 Minutes Ago</td>
+                                <td>
+                                    <?php
+                                        echo \Carbon\Carbon::createFromTimeStamp(strtotime($item->created_at))->diffForHumans();
+                                     ?>
+                                </td>
                                 <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a onclick="return xacNhanXoa('Bạn có xác nhận xóa?')" href="{{route('admin.product.getDelete', $item->id)}}">Delete</a></td>
                                 <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.product.getEdit', $item->id)}}">Edit</a></td>
                             </tr>

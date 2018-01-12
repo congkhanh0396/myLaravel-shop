@@ -70,10 +70,11 @@ return [
             'model' => App\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        // Thay đổi tên bảng mặc định users
+        'users' => [
+            'driver' => 'database',
+            'table' => 'admin',
+        ],
     ],
 
     /*

@@ -21,22 +21,22 @@
                         <thead>
                             <tr align="center">
                                 <th>ID</th>
-                                <th>Email Address</th>
-                                <th>Name</th>
-                                <th>Gender</th>
-                                <th>Address</th>
-                                <th>Number</th>
+                                <th>UserName</th>
+                                <th>Level</th>
+                                <th>Delete</th>
+                                <th>Edit</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach($list as $listUser)
                                     <tr class="odd gradeX" align="center">
-                                            <td>1</td>
-                                            <td>1</td>
-                                            <td>1</td>
-                                            <td>1</td>
-                                            <td>1}</td>
-                                            <td>1</td>
+                                            <td>{{$listUser->id}}</td>
+                                            <td>{{$listUser->username}}</td>
+                                            <td>{{$listUser->level}}</td>
+                                            <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a onclick="return xacNhanXoa('Bạn có xác nhận xóa?')" href="{{route('admin.userAdmin.getDelete',$listUser->id)}}">Delete</a></td>
+                                            <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.userAdmin.getEdit',$listUser->id)}}">Edit</a></td>
                                     </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

@@ -11,47 +11,35 @@
                     </div>
                     <!-- /.col-lg-12 -->
                     <div class="col-lg-7" style="padding-bottom:120px">
+                        <form action="" method="POST"> 
                             @include('admin.blocks.error')
-                        <form action="" method="POST">
-                            
-                        <div class="form-group">
-                                <label>Email (*)</label>
-                                <input class="form-control" name="txtEmail" placeholder="Please Enter Email" value="{{old('txtEmail')}}" readonly/>
+                            <input type="hidden" name="_token" value="{{csrf_token()}}">
+                            {{--  Tài khoản user  --}}
+                            <div class="form-group">
+                                <label>Username (*)</label>
+                                <input class="form-control" name="txtUsername" value="{{$username->username}}"  disabled />
                             </div>
+                            {{--  Mật khẩu  --}}
                             <div class="form-group">
                                 <label>Password (*)</label>
                                 <input type="password" class="form-control" name="txtPass" placeholder="Please Enter Password" />
                             </div>
+                            {{--  Nhập lại mất khẩu  --}}
                             <div class="form-group">
                                 <label>RePassword (*)</label>
                                 <input type="password" class="form-control" name="txtRePass" placeholder="Please Enter RePassword" />
                             </div>
+                            {{--  Phân quyền 0 là superAdmin , 1 là Admin , 2 là member  --}}
                             <div class="form-group">
-                                <label>Name (*)</label>
-                                <input type="text" class="form-control" name="txtName" placeholder="Please Enter Name" />
-                            </div>
-                            <div class="form-group">
-                                <label>Gender</label>
-                                <input type="text" class="form-control" name="txtGender" placeholder="Please Enter Gender" />
-                            </div>
-                            <div class="form-group">
-                                <label>Address</label>
-                                <input type="text" class="form-control" name="txtAddress" placeholder="Please Enter Address" />
-                            </div>
-                            <div class="form-group">
-                                <label>Phone Number</label>
-                                <input type="number" class="form-control" name="txtPhoneNumber" placeholder="Please Enter Phone Number" />
-                            </div>
-                            {{--  <div class="form-group">
-                                <label>User Level</label>
+                                <label>Level</label>
                                 <label class="radio-inline">
                                     <input name="rdoLevel" value="1" checked="" type="radio">Admin
                                 </label>
                                 <label class="radio-inline">
                                     <input name="rdoLevel" value="2" type="radio">Member
                                 </label>
-                            </div>  --}}
-                            <button type="submit" class="btn btn-default">User Edit</button>
+                            </div>
+                            <button type="submit" class="btn btn-default">User Add</button>
                             <button type="reset" class="btn btn-default">Reset</button>
                         <form>
                     </div>
