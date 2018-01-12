@@ -6,13 +6,9 @@
 			<div class="product-listy">
 				<h2>our Products</h2>
 				<ul class="product-list">
-					<li><a href="">New Products</a></li>
-					<li><a href="">Old Products</a></li>
-					<li><a href="">T-shirts</a></li>
-					<li><a href="">pants</a></li>
-					<li><a href="">Dress</a></li>
-					<li><a href="">Shorts</a></li>
-					<li><a href="#">Shirts</a></li>
+					@foreach($cate as $type)
+					<li><a href="{{route('products',$type->id)}}">{{$type->name}}</a></li>
+					@endforeach
 					<li><a href="register.html">Register</a></li>
 				</ul>
 			</div>
@@ -68,11 +64,6 @@
 						<a href=""><img src="source/images/arrow2.gif" alt="" class="v-middle"></a>
 					</div>
 				</div>
-				<ul class="women_pagenation">
-					<li>Page:</li>
-					<li class="active"><a href="#">1</a></li>
-					<li><a href="#">2</a></li>
-				</ul>
 				<div class="clearfix"></div>		
 			</div>
 			<div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-grid">
@@ -92,35 +83,40 @@
 				</div>
 				<div class="clearfix"></div>
 			</div>
-			<div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-grid">
+			<div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-grid">	
 				<ul>
+					@foreach($cate_product as $item)
 					<li>
-						<a class="cbp-vm-image" href="single.html">
+						<a class="cbp-vm-image" href="{{route('single',$item->id)}}">
 							<!-- <div class="simpleCart_shelfItem"> -->
 							<div class="view view-first">
-								<div class="inner_content clearfix">
+								<div class="inner_content clearfix">		
 									<div class="product_image">
-										<img src="source/images/p1.jpg" class="img-responsive" alt=""/>
+										<img src="../resources/images/{{$item->image}}" class="img-responsive" alt="" style="width:300px; height:300px"/>
 										<div class="mask">
 											<div class="info">Quick View</div>
 										</div>
 										<div class="product_container">
 											<div class="cart-left">
-												<p class="title">perspiciatis</p>
+												<p class="title">{{$item->name}}</p>
 											</div>
-											<div class="pricey"><span class="item_price">$259.00</span></div>
+											<div class="pricey"><span class="item_price">${{$item->price}}</span></div>
 											<div class="clearfix"></div>
 										</div>		
-									</div>
+									</div>			
 								</div>
 							</div>
 						</a>
 						<div class="cbp-vm-details">
-							Silver beet shallot wakame tomatillo salsify mung bean beetroot groundnut.
+								{{$item->description}}
 						</div>
 						<a class="cbp-vm-icon cbp-vm-add item_add" href="#">Add to cart</a>
 					</li>
+					@endforeach
 				</ul>
+			</div>
+			<div style="margin-left:40%; margin-top:15px;">
+				{{$cate_product->links()}}
 			</div>
 			<script src="source/js/cbpViewModeSwitch.js" type="text/javascript"></script>
 			<script src="source/js/classie.js" type="text/javascript"></script>
@@ -129,288 +125,47 @@
 	</div>
 	<div class="clearfix"></div>
 </div>
-<!-- content-section-ends -->
-
-
-<!-- <li>
-<a class="cbp-vm-image" href="single.html">
-<div class="simpleCart_shelfItem">
-<div class="view view-first">
-<div class="inner_content clearfix">
-<div class="product_image">
-<img src="source/images/p2.jpg" class="img-responsive" alt=""/>
-<div class="mask">
-<div class="info">Quick View</div>
-</div>
-<div class="product_container">
-<div class="cart-left">
-<p class="title">Great Explorer</p>
-</div>
-<div class="pricey"><span class="item_price">$189.00</span></div>
-<div class="clearfix"></div>
-</div>		
-</div>
-</div>
-</div>
-</a>
-<div class="cbp-vm-details">
-Wattle seed bunya nuts spring onion okra garlic bitterleaf zucchini.
-</div>
-<a class="cbp-vm-icon cbp-vm-add item_add" href="#">Add to cart</a>
-</div>
-</li>
-<li>
-<a class="cbp-vm-image" href="single.html">
-<div class="simpleCart_shelfItem">
-<div class="view view-first">
-<div class="inner_content clearfix">
-<div class="product_image">
-<img src="source/images/p3.jpg" class="img-responsive" alt=""/>
-<div class="mask">
-<div class="info">Quick View</div>
-</div>
-<div class="product_container">
-<div class="cart-left">
-<p class="title">Similique Sunt</p>
-</div>
-<div class="pricey"><span class="item_price">$699.00</span></div>
-<div class="clearfix"></div>
-</div>		
-</div>
-</div>
-</div>
-</a>
-<div class="cbp-vm-details">
-Kohlrabi bok choy broccoli rabe welsh onion spring onion tatsoi ricebean kombu chard.
-</div>
-<a class="cbp-vm-icon cbp-vm-add item_add" href="#">Add to cart</a>
-</div>
-</li>
-<li>
-<a class="cbp-vm-image" href="single.html">
-<div class="simpleCart_shelfItem">
-<div class="view view-first">
-<div class="inner_content clearfix">
-<div class="product_image">
-<img src="source/images/p4.jpg" class="img-responsive" alt=""/>
-<div class="mask">
-<div class="info">Quick View</div>
-</div>
-<div class="product_container">
-<div class="cart-left">
-<p class="title">Shrinking</p>
-</div>
-<div class="pricey"><span class="item_price">$599.00</span></div>
-<div class="clearfix"></div>
-</div>		
-</div>
-</div>
-</div>
-</a>
-<div class="cbp-vm-details">
-Kohlrabi bok choy broccoli rabe welsh onion spring onion tatsoi ricebean kombu chard.
-</div>
-<a class="cbp-vm-icon cbp-vm-add item_add" href="#">Add to cart</a>
-</div>
-</li>
-<li>
-<a class="cbp-vm-image" href="single.html">
-<div class="simpleCart_shelfItem">
-<div class="view view-first">
-<div class="inner_content clearfix">
-<div class="product_image">
-<img src="source/images/p5.jpg" class="img-responsive" alt=""/>
-<div class="mask">
-<div class="info">Quick View</div>
-</div>
-<div class="product_container">
-<div class="cart-left">
-<p class="title">Perfectly Simple</p>
-</div>
-<div class="pricey"><span class="item_price">$459.00</span></div>
-<div class="clearfix"></div>
-</div>		
-</div>
-</div>
-</div>
-</a>
-<div class="cbp-vm-details">
-Kohlrabi bok choy broccoli rabe welsh onion spring onion tatsoi ricebean kombu chard.
-</div>
-<a class="cbp-vm-icon cbp-vm-add item_add" href="#">Add to cart</a>
-</div>
-</li>
-<li>
-<a class="cbp-vm-image" href="single.html">
-<div class="simpleCart_shelfItem">
-<div class="view view-first">
-<div class="inner_content clearfix">
-<div class="product_image">
-<img src="source/images/p6.jpg" class="img-responsive" alt=""/>
-<div class="mask">
-<div class="info">Quick View</div>
-</div>
-<div class="product_container">
-<div class="cart-left">
-<p class="title">Equal Blame</p>
-</div>
-<div class="pricey"><span class="item_price">$119.00</span></div>
-<div class="clearfix"></div>
-</div>		
-</div>
-</div>
-</div>
-</a>
-<div class="cbp-vm-details">
-Kohlrabi bok choy broccoli rabe welsh onion spring onion tatsoi ricebean kombu chard.
-</div>
-<a class="cbp-vm-icon cbp-vm-add item_add" href="#">Add to cart</a>
-</div>
-</li>
-<li>
-<a class="cbp-vm-image" href="single.html">
-<div class="simpleCart_shelfItem">
-<div class="view view-first">
-<div class="inner_content clearfix">
-<div class="product_image">
-<img src="source/images/p7.jpg" class="img-responsive" alt=""/>
-<div class="mask">
-<div class="info">Quick View</div>
-</div>
-<div class="product_container">
-<div class="cart-left">
-<p class="title">Neque Porro</p>
-</div>
-<div class="pricey"><span class="item_price">$289.00</span></div>
-<div class="clearfix"></div>
-</div>		
-</div>
-</div>
-</div>
-</a>
-<div class="cbp-vm-details">
-Kohlrabi bok choy broccoli rabe welsh onion spring onion tatsoi ricebean kombu chard.
-</div>
-<a class="cbp-vm-icon cbp-vm-add item_add" href="#">Add to cart</a>
-</div>
-</li>
-<li>
-<a class="cbp-vm-image" href="single.html">
-<div class="simpleCart_shelfItem">
-<div class="view view-first">
-<div class="inner_content clearfix">
-<div class="product_image">
-<img src="source/images/p8.jpg" class="img-responsive" alt=""/>
-<div class="mask">
-<div class="info">Quick View</div>
-</div>
-<div class="product_container">
-<div class="cart-left">
-<p class="title">Perfectly Simple</p>
-</div>
-<div class="pricey"><span class="item_price">$169.12</span></div>
-<div class="clearfix"></div>
-</div>		
-</div>
-</div>
-</div>
-</a>
-<div class="cbp-vm-details">
-Kohlrabi bok choy broccoli rabe welsh onion spring onion tatsoi ricebean kombu chard.
-</div>
-<a class="cbp-vm-icon cbp-vm-add item_add" href="#">Add to cart</a>
-</div>
-</li>
-<li>
-<a class="cbp-vm-image" href="single.html">
-<div class="simpleCart_shelfItem">
-<div class="view view-first">
-<div class="inner_content clearfix">
-<div class="product_image">
-<img src="source/images/p9.jpg" class="img-responsive" alt=""/>
-<div class="mask">
-<div class="info">Quick View</div>
-</div>
-<div class="product_container">
-<div class="cart-left">
-<p class="title">Praising Pain</p>
-</div>
-<div class="pricey"><span class="item_price">$199.00</span></div>
-<div class="clearfix"></div>
-</div>		
-</div>
-</div>
-</div>
-</a>
-<div class="cbp-vm-details">
-Kohlrabi bok choy broccoli rabe welsh onion spring onion tatsoi ricebean kombu chard.
-</div>
-<a class="cbp-vm-icon cbp-vm-add item_add" href="#">Add to cart</a>
-</div>-->
 
 <div class="other-products">
-	<div class="container">
-		<h3 class="like text-center">Featured Collection</h3>        			
-		<ul id="flexiselDemo3">
-			<li><a href="single.html"><img src="source/images/l1.jpg" class="img-responsive"/></a>
-				<div class="product liked-product simpleCart_shelfItem">
-					<a class="like_name" href="single.html">Perfectly simple</a>
-					<p><a class="item_add" href="#"><i></i> <span class=" item_price">$759</span></a></p>
-				</div>
-			</li>
-			<li><a href="single.html"><img src="source/images/l2.jpg" class="img-responsive"/></a>						
-				<div class="product liked-product simpleCart_shelfItem">
-					<a class="like_name" href="single.html">Praising pain</a>
-					<p><a class="item_add" href="#"><i></i> <span class=" item_price">$699</span></a></p>
-				</div>
-			</li>
-			<li><a href="single.html"><img src="source/images/l3.jpg" class="img-responsive"/></a>
-				<div class="product liked-product simpleCart_shelfItem">
-					<a class="like_name" href="single.html">Neque porro</a>
-					<p><a class="item_add" href="#"><i></i> <span class=" item_price">$329</span></a></p>
-				</div>
-			</li>
-			<li><a href="single.html"><img src="source/images/l4.jpg" class="img-responsive"/></a>
-				<div class="product liked-product simpleCart_shelfItem">
-					<a class="like_name" href="single.html">Equal blame</a>
-					<p><a class="item_add" href="#"><i></i> <span class=" item_price">$499</span></a></p>
-				</div>
-			</li>
-			<li><a href="single.html"><img src="source/images/l5.jpg" class="img-responsive"/></a>
-				<div class="product liked-product simpleCart_shelfItem">
-					<a class="like_name" href="single.html">Perfectly simple</a>
-					<p><a class="item_add" href="#"><i></i> <span class=" item_price">$649</span></a></p>
-				</div>
-			</li>
-		</ul>
-		<script type="text/javascript">
-			$(window).load(function() {
-				$("#flexiselDemo3").flexisel({
-					visibleItems: 4,
-					animationSpeed: 1000,
-					autoPlay: true,
-					autoPlaySpeed: 3000,    		
-					pauseOnHover: true,
-					enableResponsiveBreakpoints: true,
-					responsiveBreakpoints: { 
-						portrait: { 
+		<div class="container">
+			<h3 class="like text-center">Sale Products</h3>        			
+			<ul id="flexiselDemo3">
+				@foreach($sale_product as $item)
+					<li><a href="{{route('single',$item->id)}}"><img src="../resources/images/{{$item->image}}" class="img-responsive" alt="" style="width:300px; height:400px" /></a>
+						<div class="product liked-product simpleCart_shelfItem">
+							<a class="like_name" href="{{route('single',$item->id)}}">{{$item->name}}</a>
+							<p><a class="item_add" href="#"><i></i> <span class=" item_price">{{$item->promotion}}</span></a></p>
+						</div>
+					</li>
+				@endforeach
+			</ul>
+			<script type="text/javascript">
+				$(window).load(function() {
+					$("#flexiselDemo3").flexisel({
+						visibleItems: 4,
+						animationSpeed: 1000,
+						autoPlay: true,
+						autoPlaySpeed: 3000,    		
+						pauseOnHover: true,
+						enableResponsiveBreakpoints: true,
+						responsiveBreakpoints: { 
+							portrait: { 
 							changePoint:480,
 							visibleItems: 1
-						}, 
-						landscape: { 
+							}, 
+							landscape: { 
 							changePoint:640,
 							visibleItems: 2
-						},
-						tablet: { 
+							},
+							tablet: { 
 							changePoint:768,
 							visibleItems: 3
+							}
 						}
-					}
+					});
 				});
-
-			});
-		</script>
-		<script type="text/javascript" src="source/js/jquery.flexisel.js"></script>
-	</div>
+			</script>
+			<script type="text/javascript" src="source/js/jquery.flexisel.js"></script>
+		</div>
 </div>
 @endsection

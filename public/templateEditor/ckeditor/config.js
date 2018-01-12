@@ -12,4 +12,5 @@ CKEDITOR.editorConfig = function( config ) {
     config.filebrowserUploadUrl = baseURL+'/templateEditor/kcfinder/upload.php?opener=ckeditor&type=files';
     config.filebrowserImageUploadUrl = baseURL+'/templateEditor/kcfinder/upload.php?opener=ckeditor&type=images';
     config.filebrowserFlashUploadUrl = baseURL+'/templateEditor/kcfinder/upload.php?opener=ckeditor&type=flash';
+    CKEDITOR.config.enterMode = CKEDITOR.ENTER_BR;
 };

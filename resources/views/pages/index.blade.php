@@ -88,11 +88,11 @@
 			</header>
 			@foreach($a as $b)
 				<div class="col-md-4 product simpleCart_shelfItem text-center">
-					 <a href="single.html"><img src="{{$b->image}}" alt="" /></a>  
+					 <a href="{{route('single',$b->id)}}"><img src="../resources/images/{{$b->image}}" alt="" style="width:300px; height:400px" /></a>  
 					<div class="mask">
-						<a href="single.html">Quick View</a>
+						<a href="{{route('single',$b->id)}}">Quick View</a>
 					</div>
-					<a class="product_name" href="single.html">{{$b->name}}</a>
+					<a class="product_name" href="{{route('single',$b->id)}}">{{$b->name}}</a>
 					<p><a class="item_add" href="#"><i></i> <span class="item_price">${{$b->price}}</span></a></p>
 				</div>
 			@endforeach
@@ -100,41 +100,18 @@
 		</div>
 	</div>
 </div>
-
 <div class="other-products">
 	<div class="container">
-		<h3 class="like text-center">Featured Collection</h3>        			
+		<h3 class="like text-center">Sale Products</h3>        			
 		<ul id="flexiselDemo3">
-			<li><a href="single.html"><img src="source/images/l1.jpg" class="img-responsive" alt="" /></a>
-				<div class="product liked-product simpleCart_shelfItem">
-					<a class="like_name" href="single.html">perfectly simple</a>
-					<p><a class="item_add" href="#"><i></i> <span class=" item_price">$759</span></a></p>
-				</div>
-			</li>
-			<li><a href="single.html"><img src="source/images/l2.jpg" class="img-responsive" alt="" /></a>						
-				<div class="product liked-product simpleCart_shelfItem">
-					<a class="like_name" href="single.html">praising pain</a>
-					<p><a class="item_add" href="#"><i></i> <span class=" item_price">$699</span></a></p>
-				</div>
-			</li>
-			<li><a href="single.html"><img src="source/images/l3.jpg" class="img-responsive" alt="" /></a>
-				<div class="product liked-product simpleCart_shelfItem">
-					<a class="like_name" href="single.html">Neque porro</a>
-					<p><a class="item_add" href="#"><i></i> <span class=" item_price">$329</span></a></p>
-				</div>
-			</li>
-			<li><a href="single.html"><img src="source/images/l4.jpg" class="img-responsive" alt="" /></a>
-				<div class="product liked-product simpleCart_shelfItem">
-					<a class="like_name" href="single.html">equal blame</a>
-					<p><a class="item_add" href="#"><i></i> <span class=" item_price">$499</span></a></p>
-				</div>
-			</li>
-			<li><a href="single.html"><img src="source/images/l5.jpg" class="img-responsive" alt="" /></a>
-				<div class="product liked-product simpleCart_shelfItem">
-					<a class="like_name" href="single.html">perfectly simple</a>
-					<p><a class="item_add" href="#"><i></i> <span class=" item_price">$649</span></a></p>
-				</div>
-			</li>
+			@foreach($sale_product as $item)
+				<li><a href="{{route('single',$item->id)}}"><img src="../resources/images/{{$item->image}}" class="img-responsive" alt="" style="width:300px; height:400px" /></a>
+					<div class="product liked-product simpleCart_shelfItem">
+						<a class="like_name" href="{{route('single',$item->id)}}">{{$item->name}}</a>
+						<p><a class="item_add" href="#"><i></i> <span class=" item_price">{{$item->promotion}}</span></a></p>
+					</div>
+				</li>
+			@endforeach
 		</ul>
 		<script type="text/javascript">
 			$(window).load(function() {

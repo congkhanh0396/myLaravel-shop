@@ -17,9 +17,9 @@ Route::get('/', function () {
 
 Route::get('index', ['as'=>'index', 'uses'=>'PageController@getIndex']);
 
-Route::get('products', ['as'=>'products', 'uses'=>'PageController@getProducts']);
+Route::get('products/{type}', ['as'=>'products', 'uses'=>'PageController@getProducts']);
 
-Route::get('single', ['as'=>'single', 'uses'=>'PageController@getSingle']);
+Route::get('single/{id}', ['as'=>'single', 'uses'=>'PageController@getSingle']);
 
 Route::get('checkout', ['as'=>'checkout', 'uses'=>'PageController@getCheckout']);
 

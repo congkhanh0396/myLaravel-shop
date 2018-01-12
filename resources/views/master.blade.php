@@ -3,6 +3,7 @@
 <head>
 <link rel="icon" href="source/images/title_logo.ico">
 <title>M &amp; A Shop</title>
+<base href="{{asset('')}}">
 <link href="source/css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="source/js/jquery.min.js"></script>

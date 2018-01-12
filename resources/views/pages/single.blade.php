@@ -6,13 +6,9 @@
 			<div class="product-listy">
 				<h2>our Products</h2>
 				<ul class="product-list">
-					<li><a href="">New Products</a></li>
-					<li><a href="">Old Products</a></li>
-					<li><a href="">T-shirts</a></li>
-					<li><a href="">pants</a></li>
-					<li><a href="">Dress</a></li>
-					<li><a href="">Shorts</a></li>
-					<li><a href="#">Shirts</a></li>
+					@foreach($cate as $type)
+						<li><a href="{{route('products',$type->id)}}">{{$type->name}}</a></li>
+					@endforeach
 					<li><a href="register.html">Register</a></li>
 				</ul>
 			</div>
@@ -51,24 +47,19 @@
 				<div class="flexslider">
 					<ul class="slides">
 						<li data-thumb="source/images/si.jpg">
-							<div class="thumb-image"> <img src="source/images/si.jpg" data-imagezoom="true" class="img-responsive" alt="" /> </div>
+							<div class="thumb-image"> <img src="../resources/images/{{$Detail_product->image}}" data-imagezoom="true" class="img-responsive" alt="" /> </div>
 						</li>
-						<li data-thumb="source/images/si1.jpg">
-							<div class="thumb-image"> <img src="source/images/si1.jpg" data-imagezoom="true" class="img-responsive" alt="" /> </div>
-						</li>
-						<li data-thumb="source/images/si2.jpg">
-							<div class="thumb-image"> <img src="source/images/si2.jpg" data-imagezoom="true" class="img-responsive" alt="" /> </div>
-						</li> 
 					</ul>
 				</div>
 			</div>
 			<div class="col-md-7 dress-info">
 				<div class="dress-name">
-					<h3>LOREM IPSUM DRESS</h3>
-					<span>$459.00</span>
+					<h3>{{$Detail_product->name}}</h3>
+					<span>${{$Detail_product->price}}</span>
 					<div class="clearfix"></div>
-					<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo</p>
-					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever</p>
+					<p>
+						{{$Detail_product->description}}
+					</p>
 				</div>
 				<div class="span span1">
 					<p class="left">FABRIC ORIGIN</p>
@@ -267,36 +258,46 @@
 	</div>
 </div>
 
-<div class="other-products products-grid">
-	<div class="container">
-	<header>
-		<h3 class="like text-center">Related Products</h3>   
-	</header>			
-	<div class="col-md-4 product simpleCart_shelfItem text-center">
-		<a href="single.html"><img src="source/images/p1.jpg" alt="" /></a>
-		<div class="mask">
-			<a href="single.html">Quick View</a>
+<div class="other-products">
+		<div class="container">
+			<h3 class="like text-center">Sale Products</h3>        			
+			<ul id="flexiselDemo3">
+				@foreach($sale_product as $item)
+					<li><a href="{{route('single',$item->id)}}"><img src="../resources/images/{{$item->image}}" class="img-responsive" alt="" style="width:300px; height:400px" /></a>
+						<div class="product liked-product simpleCart_shelfItem">
+							<a class="like_name" href="{{route('single',$item->id)}}">{{$item->name}}</a>
+							<p><a class="item_add" href="#"><i></i> <span class=" item_price">{{$item->promotion}}</span></a></p>
+						</div>
+					</li>
+				@endforeach
+			</ul>
+			<script type="text/javascript">
+				$(window).load(function() {
+					$("#flexiselDemo3").flexisel({
+						visibleItems: 4,
+						animationSpeed: 1000,
+						autoPlay: true,
+						autoPlaySpeed: 3000,    		
+						pauseOnHover: true,
+						enableResponsiveBreakpoints: true,
+						responsiveBreakpoints: { 
+							portrait: { 
+							changePoint:480,
+							visibleItems: 1
+							}, 
+							landscape: { 
+							changePoint:640,
+							visibleItems: 2
+							},
+							tablet: { 
+							changePoint:768,
+							visibleItems: 3
+							}
+						}
+					});
+				});
+			</script>
+			<script type="text/javascript" src="source/js/jquery.flexisel.js"></script>
 		</div>
-		<a class="product_name" href="single.html">Sed ut perspiciatis</a>
-		<p><a class="item_add" href="#"><i></i> <span class="item_price">$329</span></a></p>
 	</div>
-	<div class="col-md-4 product simpleCart_shelfItem text-center">
-		<a href="single.html"><img src="source/images/p2.jpg" alt="" /></a>
-		<div class="mask">
-			<a href="single.html">Quick View</a>
-		</div>
-		<a class="product_name" href="single.html">great explorer</a>
-		<p><a class="item_add" href="#"><i></i> <span class="item_price">$599.8</span></a></p>
-	</div>
-	<div class="col-md-4 product simpleCart_shelfItem text-center">
-		<a href="single.html"><img src="source/images/p3.jpg" alt="" /></a>
-		<div class="mask">
-			<a href="single.html">Quick View</a>
-		</div>
-		<a class="product_name" href="single.html">similique sunt</a>
-		<p><a class="item_add" href="#"><i></i> <span class="item_price">$359.6</span></a></p>
-	</div>
-	<div class="clearfix"></div>
-	</div>
-</div>
 @endsection

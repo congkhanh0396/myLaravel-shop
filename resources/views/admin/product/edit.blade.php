@@ -23,13 +23,25 @@
                         <div class="form-group">
                             <label>Category</label>
                                 <select class="form-control" name="txtCategory" value="{{$item->id_type}}" required>
-                                    @if($item->id_type == 1)
+                                    {{--  @if($item->id_type == 1)
                                         <option selected value="1">Áo thun</option>
                                         <option value="2">Áo sơ mi</option>
                                     @else
                                         <option value="1">Áo thun</option>
                                         <option selected value="2">Áo sơ mi</option>
-                                    @endif
+                                    @endif  --}}
+                                    <?php  $cate = DB::table('type_products')->select('id','name')->get();  ?>
+                                    @foreach($cate as $data)
+                                        @if($data->id == $item->id_type)
+                                             <option value="{{$data->id}}" selected="selected">
+                                                {{$data->name}}
+                                             </option>
+                                        @else
+                                             <option value="{{$data->id}}">
+                                                {{$data->name}}
+                                             </option>
+                                        @endif
+                                    @endforeach
                                 </select>
                         </div>
 
